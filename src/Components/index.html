@@ -6,12 +6,20 @@
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <title>Sweet Typescript App</title>
 
+        <!-- LIBRARY STYLES -->
+        <link rel="stylesheet" href="styles/bootstrap.min.css" />
+
+        <!-- LIBRARY SCRIPTS -->
+        <script type="text/javascript" src="scripts/lib/angular-bundle.min.js"></script>
+        <script type="text/javascript" src="scripts/lib/bootstrap-bundle.min.js"></script>
+        <script type="text/javascript" src="scripts/lib/jquery-bundle.min.js"></script>
+
         <base href="/">
     </head>
-    <body>
-        <h1>Sweet TypeScript App</h1>
+    <body class="container">
+            <h1>Sweet TypeScript App</h1>
 
-        <p>View starts here:</p>
-        <div ng-view></div>
+            <p>View starts here:</p>
+            <div ng-view class="well"></div>
     </body>
 </html>

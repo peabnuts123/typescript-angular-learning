@@ -1,15 +1,13 @@
 const webpack = require('webpack');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
-const AddAssetHtmlPlugin = require('add-asset-html-webpack-plugin');
-
 
 const libraries = require('./libraries').all;
 
 module.exports = {
     entry: "./src/Components/index.ts",
     output: {
-        path: __dirname + '/dist',
-        filename: "application.min.js"
+        path: 'dist/',
+        filename: "scripts/application.min.js"
     },
     resolve: {
         // Add '.ts' and '.tsx' as a resolvable extension.
@@ -46,15 +44,9 @@ module.exports = {
     plugins: libraries.map(function (libraryName) {
         return new webpack.DllReferencePlugin({
             context: '.',
-            manifest: require(`./dist/${libraryName}-manifest.json`)
+            manifest: require(`./build/${libraryName}-manifest.json`)
         });
     })
-    .concat(libraries.map(function (libraryName) {
-        return new AddAssetHtmlPlugin({
-            filepath: require.resolve(`./dist/${libraryName}-bundle.min.js`),
-            includeSourcemap: false
-        });
-    }))
     .concat([
         new HtmlWebpackPlugin({
             template: '!!html-loader?minimize=false!./src/Components/index.html'
